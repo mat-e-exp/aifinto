@@ -8,30 +8,44 @@
 </head>
 <body>
     <div class="container">
-        <header>
-            <h1>aifinto</h1>
-            <p class="tagline">AI-Powered Financial Intelligence Tools</p>
-        </header>
-
         <main>
-            <div class="apps-grid">
-                <a href="https://ai-pulse.aifinto.com" class="app-card">
-                    <h2>AI Pulse</h2>
-                    <p>Daily intelligence briefing on the AI sector - track product launches, funding, technical breakthroughs, and market sentiment for investment decisions.</p>
-                    <span class="status live">Live</span>
-                </a>
+            <div class="logo-container">
+                <object type="image/svg+xml" data="logo-animated.svg" class="logo">
+                    <img src="logo.svg" alt="AI Pulse Logo" class="logo">
+                </object>
+            </div>
 
-                <div class="app-card coming-soon">
-                    <h2>More Tools Coming Soon</h2>
-                    <p>Additional AI-powered financial tools and analytics will be added here.</p>
-                    <span class="status">Coming Soon</span>
+            <h1>AI Pulse</h1>
+            <p class="tagline">Daily AI sector intelligence briefings for investment decisions</p>
+
+            <div class="auth-box">
+                <a href="https://ai-pulse.aifinto.com" class="btn btn-primary btn-full">Login</a>
+
+                <div class="divider">
+                    <span>New here?</span>
                 </div>
+
+                <input type="email" id="email" placeholder="Enter your email to request access" class="email-input">
+                <button type="button" class="btn btn-secondary btn-full" onclick="handleSignup()">Request Access</button>
             </div>
         </main>
 
         <footer>
-            <p>&copy; 2025 aifinto. All rights reserved.</p>
+            <p>......more AI Financial Tools coming soon......</p>
         </footer>
     </div>
+
+    <script>
+        function handleSignup() {
+            const email = document.getElementById('email').value;
+            if (!email || !email.includes('@')) {
+                alert('Please enter a valid email address');
+                return;
+            }
+            // Placeholder - will be replaced with Mailchimp integration
+            alert('Thanks for requesting access! We will be in touch soon.');
+            document.getElementById('email').value = '';
+        }
+    </script>
 </body>
 </html>
