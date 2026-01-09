@@ -8,37 +8,58 @@
 </head>
 <body>
     <div class="container">
-        <main>
-            <div class="logo-container">
-                <object type="image/svg+xml" data="logo-animated.svg" class="logo">
-                    <img src="logo.svg" alt="AI Pulse Logo" class="logo">
+        <header>
+            <div class="header-logo">
+                <object type="image/svg+xml" data="aifinto-logo-animated.svg" class="logo-small">
+                    <img src="aifinto-logo.svg" alt="aifinto Logo" class="logo-small">
                 </object>
             </div>
-
-            <h1>AI Pulse</h1>
-            <p class="tagline">Daily AI sector intelligence briefings</p>
-
-            <div class="auth-box">
-                <a href="https://ai-pulse.aifinto.com" class="btn btn-primary btn-full">Login</a>
-
-                <div class="divider">
-                    <span>New here?</span>
-                </div>
-
-                <input type="email" id="email" placeholder="Enter your email to request access" class="email-input">
-                <button type="button" class="btn btn-secondary btn-full" onclick="handleSignup()">Request Access</button>
+            <div class="header-text">
+                <h1>Welcome to aifinto</h1>
+                <p class="subtitle">AI Financial Tools</p>
             </div>
+        </header>
+
+        <main>
+            <section class="tools-section">
+                <h2>Currently Available Tools</h2>
+
+                <div class="tool-card">
+                    <div class="tool-logo">
+                        <object type="image/svg+xml" data="ai-pulse-logo.svg" class="tool-logo-img">
+                            <img src="ai-pulse-logo.svg" alt="AI Pulse Logo" class="tool-logo-img">
+                        </object>
+                    </div>
+                    <div class="tool-info">
+                        <h3>AI Pulse</h3>
+                        <p class="tool-description">Daily AI sector intelligence briefings</p>
+                        <div class="tool-actions">
+                            <a href="https://ai-pulse.aifinto.com" class="btn btn-primary">Login</a>
+                            <button type="button" class="btn btn-secondary" onclick="toggleSignup()">Request Access</button>
+                        </div>
+                        <div class="signup-form" id="signup-form">
+                            <input type="email" id="email" placeholder="Enter your email" class="email-input">
+                            <button type="button" class="btn btn-secondary" onclick="handleSignup()">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </main>
 
         <footer>
-            <p>......more AI Financial Tools coming soon......</p>
+            <p>More AI Financial Tools coming soon</p>
         </footer>
     </div>
 
     <script>
+        function toggleSignup() {
+            const form = document.getElementById('signup-form');
+            form.classList.toggle('visible');
+        }
+
         async function handleSignup() {
             const email = document.getElementById('email').value;
-            const button = document.querySelector('.btn-secondary');
+            const button = document.querySelector('.signup-form .btn');
 
             if (!email || !email.includes('@')) {
                 alert('Please enter a valid email address');
@@ -58,6 +79,7 @@
                 if (response.ok) {
                     alert('Thanks for requesting access! We will be in touch soon.');
                     document.getElementById('email').value = '';
+                    document.getElementById('signup-form').classList.remove('visible');
                 } else {
                     alert('Something went wrong. Please try again.');
                 }
@@ -65,7 +87,7 @@
                 alert('Something went wrong. Please try again.');
             }
 
-            button.textContent = 'Request Access';
+            button.textContent = 'Submit';
             button.disabled = false;
         }
     </script>
